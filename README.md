@@ -1,0 +1,2 @@
+# spacemacs.d
+Spacemacs个人初始化文件，包含日常基本功能，包括flycheck配合modelsim检查Verilog语法
