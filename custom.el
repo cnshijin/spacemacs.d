@@ -6,7 +6,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flycheck-modelsim-work-path (quote ("../../tcl/work")))
- '(global-hungry-delete-mode t)
  '(helm-ag-base-command "ag -S --nocolor --nogroup")
  '(package-selected-packages
    (quote

@@ -310,6 +310,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; 添加可执行文件路径
   (setq exec-path (cons "d:/emacs/bin" exec-path))
+  (global-hungry-delete-mode t) ;; 允许快速删除
   (global-linum-mode t)       ;; 显示行号
   (global-company-mode t)     ;; 打开全局company-mode
   (prefer-coding-system 'gbk) ;; 设置默认读入文件编码
