@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -61,7 +62,7 @@ values."
    ;; 1. holy-mode R
    dotspacemacs-excluded-packages '(
                                     magit-gh-pulls magit-gitflow org-projectile
-                                    org-bullets smooth-scrolling org-repo-todo org-download
+                                    smooth-scrolling org-repo-todo org-download
                                     org-timer org-present google-translate fancy-battery
                                     git-gutter git-gutter-fringe)
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -329,6 +330,8 @@ you should place your code here."
         '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
   ;; 关闭verilog-mode下的yasnippet
   (add-hook 'verilog-mode-hook (lambda () (yas-minor-mode -1)))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
+                                      (linum-mode -1)))
   ;; 配置flycheck modelsim语法检查
   (flycheck-def-option-var flycheck-modelsim-include-path nil verilog-modelsim
     "A list of include directories for Modelsim.
