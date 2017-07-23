@@ -20,10 +20,10 @@ values."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'unused
+   dotspacemacs-enable-lazy-installation nil
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
-   dotspacemacs-ask-for-lazy-installation t
+   dotspacemacs-ask-for-lazy-installation nil
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -62,7 +61,7 @@ values."
    ;; 1. holy-mode R
    dotspacemacs-excluded-packages '(
                                     magit-gh-pulls magit-gitflow org-projectile
-                                    smooth-scrolling org-repo-todo org-download
+                                    smooth-scrolling org-repo-todo org-download org-bullets
                                     org-timer org-present google-translate fancy-battery
                                     git-gutter git-gutter-fringe)
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -328,8 +327,7 @@ you should place your code here."
   ;; 标题栏显示路径和文件名
   (setq frame-title-format
         '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
-  ;; 关闭verilog-mode下的yasnippet
-  (add-hook 'verilog-mode-hook (lambda () (yas-minor-mode -1)))
+  ;; 关闭org-mode下的行号显示
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
                                       (linum-mode -1)))
   ;; 配置flycheck modelsim语法检查
@@ -371,6 +369,10 @@ Please See Modelsim Manual, Command 'vlog'."
                                  (setq flycheck-checker 'verilog-modelsim)
                                  (flycheck-mode -1)
                                  (yas-minor-mode -1)))
+
+  ;; ORG 配置
+  (setq org-agenda-files (list "e:/c_docserver/gtd/家.org"
+                               "e:/c_docserver/gtd/睿视兴.org"))
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
