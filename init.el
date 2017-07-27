@@ -54,7 +54,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(cnfonts org-preview-html)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -328,8 +328,7 @@ you should place your code here."
   (setq frame-title-format
         '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
   ;; 关闭org-mode下的行号显示
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
-                                      (linum-mode -1)))
+  (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
   ;; 配置flycheck modelsim语法检查
   (flycheck-def-option-var flycheck-modelsim-include-path nil verilog-modelsim
     "A list of include directories for Modelsim.
@@ -370,10 +369,15 @@ Please See Modelsim Manual, Command 'vlog'."
                                  (flycheck-mode -1)
                                  (yas-minor-mode -1)))
 
+  ;; 中英文字体对齐
+  (require 'cnfonts)
+  (cnfonts-enable)
+  (cnfonts-set-spacemacs-fallback-fonts)
+  (setq cnfonts-use-face-font-rescale t)
   ;; ORG 配置
+  (setq org-html-checkbox-type 'html)
   (setq org-agenda-files (list "e:/c_docserver/gtd/家.org"
-                               "e:/c_docserver/gtd/睿视兴.org"))
-  )
+                               "e:/c_docserver/gtd/睿视兴.org")))
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
