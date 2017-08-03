@@ -324,6 +324,11 @@ you should place your code here."
   ;; 条款3：使用backward-kill-word（向后删一词）
   (global-set-key "\C-w" 'backward-kill-word)
   (global-set-key "\C-x\C-k" 'kill-region)
+  ;; 允许 emacsclient
+  (require 'server)
+  (setq server-name "vm")
+  (unless (server-running-p)
+    (server-start))
   ;; 标题栏显示路径和文件名
   (setq frame-title-format
         '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
